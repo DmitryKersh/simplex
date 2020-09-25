@@ -113,7 +113,7 @@ CanonicalTask read_task(istream& is){
     getline(is, task.function);
 
     cout << COND_NUMBER << endl;
-    is >> task.conditions_number;
+    is >> task.conditions_number; is.ignore();
 
     task.conditions = vector<string>(task.conditions_number);
     cout << COND_HINT << endl;
@@ -133,4 +133,14 @@ void Print(const vector<int>& v){
         cout << v[i] << ((i == size - 1) ? " " : ", ");
     }
     cout << "]" << endl;
+}
+
+vector<Rational> to_rational(const vector<int>& v){
+    vector<Rational> res(v.size());
+
+    for (size_t i = 0; i < v.size(); i++){
+        res[i] = Rational(v[i], 1);
+    }
+
+    return res;
 }

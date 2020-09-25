@@ -18,13 +18,11 @@ public:
     Rational(int new_numerator, int new_denominator);
 
     [[nodiscard]] int Numerator() const;
-
     [[nodiscard]] int Denominator() const;
 
 private:
     int numerator;
     int denominator;
-
 };
 
 

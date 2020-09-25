@@ -4,9 +4,13 @@
 
 
 int main() {
+    CanonicalTask task = read_task(cin);
 
+    Print(parse_func(task.function));
 
-    Print(parse_func("-21x1 + x1 + x3 => max"));
-    Print(parse_condition("-5x2 + x1 + 3x3 - x3 - x2 > 34"));
+    for (const string& s : task.conditions) {
+        Print(parse_condition(s));
+    }
+    
     return 0;
 }
