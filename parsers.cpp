@@ -83,8 +83,8 @@ vector<int> parse_func(const string& str){
     return coeffs;
 }
 
-vector<int> parse_condition(const string& str, size_t size){
-    vector<int> coeffs(size);
+vector<int> parse_condition(const string& str){
+    vector<int> coeffs;
 
     istringstream stream(str);
 
@@ -105,3 +105,32 @@ vector<int> parse_condition(const string& str, size_t size){
     return coeffs;
 }
 
+CanonicalTask read_task(istream& is){
+    CanonicalTask task;
+
+    cout << FUNC_HINT << endl;
+    cout << WARNING << endl;
+    getline(is, task.function);
+
+    cout << COND_NUMBER << endl;
+    is >> task.conditions_number;
+
+    task.conditions = vector<string>(task.conditions_number);
+    cout << COND_HINT << endl;
+
+    for (size_t i = 0; i < task.conditions_number; i++){
+        cout << "Enter condition #" << i + 1 << endl;
+        getline(is, task.conditions[i]);
+    }
+
+    return task;
+}
+
+void Print(const vector<int>& v){
+    cout << "[ ";
+    size_t size = v.size();
+    for (size_t i = 0; i < size; i++) {
+        cout << v[i] << ((i == size - 1) ? " " : ", ");
+    }
+    cout << "]" << endl;
+}
