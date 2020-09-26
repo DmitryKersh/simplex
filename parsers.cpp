@@ -74,12 +74,13 @@ vector<int> parse_func(const string& str){
     string goal;
     stream >> goal;
 
+    // YT VIDEO SAID WE INVERT IF -> MAX
     invert_if(coeffs, goal == "min");
 
     if (goal != "max" && goal != "min") {
         throw runtime_error("Function should achieve max or min, but entered: " + stream.str());
     }
-
+    coeffs.insert(coeffs.begin(), 0);
     return coeffs;
 }
 
@@ -98,7 +99,7 @@ vector<int> parse_condition(const string& str){
 
     int b_i = 0;
     stream >> b_i;
-    coeffs.push_back(b_i);
+    coeffs.insert(coeffs.begin(), b_i);
 
     invert_if(coeffs, sign);
 

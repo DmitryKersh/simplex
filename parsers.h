@@ -35,11 +35,13 @@ vector<int> parse_condition(const string& str);
 
 struct CanonicalTask{
     string function;
+    int var_number;
     int conditions_number;
     vector<string> conditions;
 };
 
 CanonicalTask read_task(istream& is);
+
 void Print(const vector<int>& v);
 
 vector<Rational> to_rational(const vector<int>& v);

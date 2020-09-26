@@ -1,7 +1,4 @@
-#include "parsers.h"
-
-
-
+#include "table.h"
 
 int main() {
     CanonicalTask task = read_task(cin);
@@ -11,6 +8,8 @@ int main() {
     for (const string& s : task.conditions) {
         Print(parse_condition(s));
     }
+
+    Table table(task.conditions_number + 1);
     
     return 0;
 }

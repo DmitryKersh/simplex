@@ -9,11 +9,17 @@
 #include "Rational.h"
 #include "parsers.h"
 
+// columns =
+
+// rows = conditions + 1 (for F)
 
 class Table {
 public:
-    Table(size_t r, size_t c);
+    Table(CanonicalTask& task);
 
+    size_t resolving_col_index();
+    size_t resolving_row_index();
+    void evaluate_simplex_relations();
 private:
     size_t rows;
     size_t columns;

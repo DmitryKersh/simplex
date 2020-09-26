@@ -84,3 +84,15 @@ ostream& operator << (ostream& os, const Rational& r) {
 bool operator < (const Rational& lhs, const Rational& rhs) {
     return (lhs - rhs).Numerator() < 0;
 }
+
+bool operator > (const Rational& lhs, const Rational& rhs) {
+    return rhs < lhs;
+}
+
+bool operator < (const Rational& lhs, const int& rhs){
+    return lhs < Rational(rhs, 1);
+}
+
+bool operator > (const Rational& lhs, const int& rhs){
+    return Rational(rhs, 1) < lhs;
+}

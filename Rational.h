@@ -42,4 +42,10 @@ ostream& operator << (ostream& os, const Rational& r);
 
 bool operator < (const Rational& lhs, const Rational& rhs);
 
+bool operator > (const Rational& lhs, const Rational& rhs);
+
+bool operator < (const Rational& lhs, const int& rhs);
+
+bool operator > (const Rational& lhs, const int& rhs);
+
 #endif //SIMPLEX_RATIONAL_H
