@@ -67,7 +67,7 @@ size_t Table::resolving_row_index() const {
 
     FOR_BASIS_ROWS {
         if (data.at(ROW).at(LAST_IN_ROW).Numerator() != 0){
-            if (data.at(ROW).at(LAST_IN_ROW) < min){
+            if (data.at(ROW).at(LAST_IN_ROW) < min && !(data.at(ROW).at(LAST_IN_ROW) == Rational(0, 1))){
                 min = data.at(ROW).at(LAST_IN_ROW);
                 index = ROW;
             }
@@ -125,6 +125,7 @@ Rational Table::solve_simplex() {
         recount();
         print_table(cout);
         step++;
+        cin.get();
     }
     cout << "Function = " << FUNCTION_ROW.at(0) << endl;
     for (size_t i = 0; i < rows - 1; i++){
@@ -135,7 +136,7 @@ Rational Table::solve_simplex() {
 
 void Table::print_table(ostream &os) const {
     for (const auto& row : data){
-        for (size_t i = 0; i < LAST_IN_ROW; i++){
+        for (size_t i = 0; i < columns; i++){
             os.width(10);
             os << row.at(i);
         }
