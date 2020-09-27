@@ -46,4 +46,9 @@ void Print(const vector<int>& v);
 
 vector<Rational> to_rational(const vector<int>& v);
 
+#undef WARNING
+#undef FUNC_HINT
+#undef COND_HINT
+#undef COND_NUMBER
+
 #endif //SIMPLEX_PARSERS_H

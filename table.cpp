@@ -143,3 +143,7 @@ void Table::print_table(ostream &os) const {
     }
     os << endl;
 }
+
+#undef FUNCTION_ROW
+#undef FOR_BASIS_ROWS
+#undef LAST_IN_ROW
