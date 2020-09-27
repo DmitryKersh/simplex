@@ -17,18 +17,19 @@ using std::setw;
 
 class Table {
 public:
-    Table(CanonicalTask& task);
+    explicit Table(CanonicalTask& task);
 
-    size_t resolving_col_index() const;
-    size_t resolving_row_index() const;
-    bool is_not_optimal() const;
+    [[nodiscard]] size_t resolving_col_index() const;
+    [[nodiscard]] size_t resolving_row_index() const;
+    [[nodiscard]] bool is_not_optimal() const;
 
-    void recount();
     void evaluate_simplex_relations();
     void add_rows(size_t to_what, size_t what, Rational coefficient);
     void divide_row(size_t what, Rational coefficient);
 
-    void print_table(ostream& os);
+    void recount();
+
+    void print_table(ostream& os) const;
 
     // solving func
     Rational solve_simplex();

@@ -6,6 +6,7 @@
 #define SIMPLEX_RATIONAL_H
 
 #include <iostream>
+#include <sstream>
 
 using std::istream;
 using std::ostream;

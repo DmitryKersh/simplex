@@ -11,6 +11,7 @@ int main() {
 
     Table table(task);
 
+    cout << "Initial table:" << endl;
     table.print_table(cout);
 
     try {

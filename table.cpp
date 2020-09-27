@@ -27,7 +27,7 @@ Table::Table(CanonicalTask& task) : rows(task.conditions_number + 1), data(rows)
     }
 
     // init 'columns' field
-    // columns: for variables + for additional variables (1 for each condition) + 1 for simplex relations
+    // columns: for variables & b_i + for additional variables (1 for each condition) + 1 for simplex relations
     columns = longest_row_size + task.conditions_number + 1;
 
     // matching all rows' lengths
@@ -35,17 +35,17 @@ Table::Table(CanonicalTask& task) : rows(task.conditions_number + 1), data(rows)
         row.resize(columns);
     }
 
-    for (size_t i = 0; i < task.conditions_number; i++){
-        data.at(i).at(i + task.var_number - 1) = Rational(1, 1);
+    FOR_BASIS_ROWS{
+        data.at(ROW).at( task.var_number - 1 + ROW) = Rational(1, 1);
     }
 }
 
 size_t Table::resolving_col_index() const {
-    Rational max;
-    size_t index;
+    Rational min = FUNCTION_ROW.at(1);
+    size_t index = 1;
     for (size_t i = 1; i < LAST_IN_ROW; i++){
-        if (FUNCTION_ROW.at(i) > max){
-            max = FUNCTION_ROW.at(i);
+        if (FUNCTION_ROW.at(i) < min){
+            min = FUNCTION_ROW.at(i);
             index = i;
         }
     }
@@ -62,8 +62,8 @@ void Table::evaluate_simplex_relations(){
 }
 
 size_t Table::resolving_row_index() const {
-    Rational min;
-    size_t index;
+    Rational min = data.at(0).at(LAST_IN_ROW);
+    size_t index = 0;
 
     FOR_BASIS_ROWS {
         if (data.at(ROW).at(LAST_IN_ROW).Numerator() != 0){
@@ -102,35 +102,42 @@ void Table::recount() {
     evaluate_simplex_relations();
     size_t res_row = resolving_row_index();
 
+    //
+    cout << "[resolving element] row: " << res_row << "; col: " << res_col << endl;
+
     // getting value of resolving element
     Rational res_el = data.at(res_row).at(res_col);
 
     // dividing resolving row by it
     divide_row(res_row, res_el);
 
-    for (size_t current_row = 0; current_row < rows && current_row != res_row; current_row++){
-        add_rows(current_row, res_row, -data.at(current_row).at(res_col));
+    for (size_t current_row = 0; (current_row < rows); current_row++){
+        if (current_row != res_row){
+            add_rows(current_row, res_row, -data.at(current_row).at(res_col));
+        }
     }
 }
 
 Rational Table::solve_simplex() {
-    size_t step = 0;
+    size_t step = 1;
     while (is_not_optimal()){
         cout << "STEP " << step << endl;
         recount();
         print_table(cout);
+        step++;
     }
     cout << "Function = " << FUNCTION_ROW.at(0) << endl;
     for (size_t i = 0; i < rows - 1; i++){
-        cout << "x" << i + 1 << "= " << data.at(0).at(i) << "; ";
+        cout << "x" << i + 1 << "= " << data.at(i).at(0) << "; ";
     }
     cout << endl;
 }
 
-void Table::print_table(ostream &os) {
-    for (auto row : data){
-        for (Rational number : row){
-            os << setw(7) << number;
+void Table::print_table(ostream &os) const {
+    for (const auto& row : data){
+        for (size_t i = 0; i < LAST_IN_ROW; i++){
+            os.width(10);
+            os << row.at(i);
         }
         os << endl;
     }

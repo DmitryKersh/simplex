@@ -78,7 +78,12 @@ istream& operator >> (istream& is, Rational& r) {
 }
 
 ostream& operator << (ostream& os, const Rational& r) {
-    return os << r.Numerator() << '/' << r.Denominator();
+    if (r.Denominator() == 1){
+        return os << r.Numerator();
+    }
+    std::ostringstream osstr;
+    osstr << r.Numerator() << '/' << r.Denominator();
+    return os << osstr.str();
 }
 
 bool operator < (const Rational& lhs, const Rational& rhs) {
