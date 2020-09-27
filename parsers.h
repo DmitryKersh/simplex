@@ -5,10 +5,7 @@
 #ifndef SIMPLEX_PARSERS_H
 #define SIMPLEX_PARSERS_H
 
-#define WARNING "WARNING! Variable index matters, while name doesn't. Example: x1 = y1 = abcdef1, but x1 != x2 != y3"
-#define FUNC_HINT "Enter function: Format: \"x1 - x2 + 4x3 => max\""
-#define COND_NUMBER "Enter number of conditions"
-#define COND_HINT "Start entering conditions: Format: \"3x1 - 4x2 - x3 <= 5\""
+
 
 
 #include <iostream>
@@ -46,9 +43,6 @@ void Print(const vector<int>& v);
 
 vector<Rational> to_rational(const vector<int>& v);
 
-#undef WARNING
-#undef FUNC_HINT
-#undef COND_HINT
-#undef COND_NUMBER
+
 
 #endif //SIMPLEX_PARSERS_H

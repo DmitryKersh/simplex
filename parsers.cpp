@@ -4,6 +4,11 @@
 
 #include "parsers.h"
 
+#define WARNING "WARNING! Variable index matters, while name doesn't. Example: x1 = y1 = abcdef1, but x1 != x2 != y3"
+#define FUNC_HINT "Enter function: Format: \"x1 - x2 + 4x3 => max\""
+#define COND_NUMBER "Enter number of conditions"
+#define COND_HINT "Start entering conditions: Format: \"3x1 - 4x2 - x3 <= 5\""
+
 void invert_if(vector<int>& v, bool condition){
     if (condition){
         for (int& n : v){
@@ -145,3 +150,8 @@ vector<Rational> to_rational(const vector<int>& v){
 
     return res;
 }
+
+#undef WARNING
+#undef FUNC_HINT
+#undef COND_HINT
+#undef COND_NUMBER
