@@ -96,3 +96,7 @@ bool operator < (const Rational& lhs, const int& rhs){
 bool operator > (const Rational& lhs, const int& rhs){
     return Rational(rhs, 1) < lhs;
 }
+
+Rational operator- (const Rational& operand){
+    return Rational(-operand.Numerator(), operand.Denominator());
+}

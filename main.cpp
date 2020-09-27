@@ -9,7 +9,9 @@ int main() {
         Print(parse_condition(s));
     }
 
-    Table table(task.conditions_number + 1);
-    
+    Table table(task);
+
+    table.solve_simplex();
+
     return 0;
 }
