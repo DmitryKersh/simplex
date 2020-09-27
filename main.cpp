@@ -11,7 +11,14 @@ int main() {
 
     Table table(task);
 
-    table.solve_simplex();
+    table.print_table(cout);
+
+    try {
+        table.solve_simplex();
+    }
+    catch (std::out_of_range& e) {
+        cout << e.what();
+    }
 
     return 0;
 }
