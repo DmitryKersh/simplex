@@ -105,3 +105,15 @@ bool operator > (const Rational& lhs, const int& rhs){
 Rational operator- (const Rational& operand){
     return Rational(-operand.Numerator(), operand.Denominator());
 }
+
+Rational abs (const Rational& operand){
+    return operand.Numerator() < 0 ? -operand : operand;
+}
+
+bool operator <=(const Rational& lhs, const Rational& rhs){
+    return lhs < rhs || lhs == rhs;
+}
+
+bool operator >=(const Rational& lhs, const Rational& rhs){
+    return lhs > rhs || lhs == rhs;
+}

@@ -36,16 +36,16 @@ Table::Table(CanonicalTask& task) : rows(task.conditions_number + 1), data(rows)
     }
 
     FOR_BASIS_ROWS{
-        data.at(ROW).at( task.var_number - 1 + ROW) = Rational(1, 1);
+        data.at(ROW).at( task.var_number + 1 + ROW) = Rational(1, 1);
     }
 }
 
 size_t Table::resolving_col_index() const {
-    Rational min = FUNCTION_ROW.at(1);
+    Rational max_abs = abs(FUNCTION_ROW.at(1));
     size_t index = 1;
     for (size_t i = 1; i < LAST_IN_ROW; i++){
-        if (FUNCTION_ROW.at(i) < min){
-            min = FUNCTION_ROW.at(i);
+        if (abs(FUNCTION_ROW.at(i)) >= max_abs){
+            max_abs = abs(FUNCTION_ROW.at(i));
             index = i;
         }
     }

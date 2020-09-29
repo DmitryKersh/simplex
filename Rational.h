@@ -51,4 +51,10 @@ bool operator > (const Rational& lhs, const int& rhs);
 
 Rational operator - (const Rational& operand);
 
+Rational abs (const Rational& operand);
+
+bool operator <= (const Rational& lhs, const Rational& rhs);
+
+bool operator >=(const Rational& lhs, const Rational& rhs);
+
 #endif //SIMPLEX_RATIONAL_H
