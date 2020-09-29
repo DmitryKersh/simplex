@@ -11,8 +11,8 @@
 
 Table::Table(CanonicalTask& task) : rows(task.conditions_number + 1), data(rows) {
     // initialising rows: conditions
-    for (size_t i = 0; i < rows - 1; i++){
-        data.at(i) = to_rational(parse_condition(task.conditions[i]));
+    FOR_BASIS_ROWS {
+        data.at(ROW) = to_rational(parse_condition(task.conditions[ROW]));
     }
 
     // initialising rows: function
