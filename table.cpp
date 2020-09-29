@@ -1,6 +1,4 @@
-//
-// Created by dimchik on 22.09.2020.
-//
+// Copyright 2020 Dmitry Karpukhin <d.karpukhin@mail.ru>
 
 #include "table.h"
 
@@ -125,7 +123,8 @@ Rational Table::solve_simplex() {
         recount();
         print_table(cout);
         step++;
-        cin.get();
+        // uncomment this for testing
+        //cin.get(); cin.get();
     }
     cout << "Function = " << FUNCTION_ROW.at(0) << endl;
     for (size_t i = 0; i < rows - 1; i++){
@@ -136,7 +135,8 @@ Rational Table::solve_simplex() {
 
 void Table::print_table(ostream &os) const {
     for (const auto& row : data){
-        for (size_t i = 0; i < columns; i++){
+        // use 'i < columns' instead of 'i < LAST_IN_ROW' to show simplex relations
+        for (size_t i = 0; i < LAST_IN_ROW; i++){
             os.width(10);
             os << row.at(i);
         }

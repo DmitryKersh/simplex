@@ -1,6 +1,4 @@
-//
-// Created by dimchik on 25.09.2020.
-//
+// Copyright 2020 Dmitry Karpukhin <d.karpukhin@mail.ru>
 
 #include "Rational.h"
 
@@ -12,17 +10,17 @@ int gcd(int a, int b){
     }
 }
 
-Rational::Rational() {  // дробь по умолчанию — 0/1
+Rational::Rational() {
     numerator = 0;
     denominator = 1;
 }
 
 Rational::Rational(int new_numerator, int new_denominator) {
     const int divisor = gcd(new_numerator, new_denominator);
-    // сократим дробь, разделив числитель и знаменатель на их НОД
+
     numerator = new_numerator / divisor;
     denominator = new_denominator / divisor;
-    // знаменатель должен быть положительным
+
     if (denominator < 0) {
         denominator = -denominator;
         numerator = -numerator;

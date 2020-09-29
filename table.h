@@ -1,6 +1,4 @@
-//
-// Created by dimchik on 22.09.2020.
-//
+// Copyright 2020 Dmitry Karpukhin <d.karpukhin@mail.ru>
 
 #ifndef SIMPLEX_TABLE_H
 #define SIMPLEX_TABLE_H

@@ -1,6 +1,4 @@
-//
-// Created by dimchik on 25.09.2020.
-//
+// Copyright 2020 Dmitry Karpukhin <d.karpukhin@mail.ru>
 
 #ifndef SIMPLEX_RATIONAL_H
 #define SIMPLEX_RATIONAL_H

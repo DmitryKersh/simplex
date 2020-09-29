@@ -11,9 +11,6 @@
 
 or
 
-    THIS [6 6 6] FUNCTION IS PROBABLY THE ONLY 
-    VARIANT THAT MAKES INFINITE LOOP
-
     6x1 + 6x2 + 6x3 => max
     3
     4x1 + x2 + x3 <= 5
@@ -36,5 +33,6 @@ or
     x1 + 4x2 <= 3
     x2 + 2x3 <= 12
     
+    # output:
     Function = 116/7
     x1= 13/7; x2= 2/7; x3= 82/7;

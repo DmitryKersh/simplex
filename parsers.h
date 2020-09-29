@@ -1,12 +1,7 @@
-//
-// Created by dimchik on 22.09.2020.
-//
+// Copyright 2020 Dmitry Karpukhin <d.karpukhin@mail.ru>
 
 #ifndef SIMPLEX_PARSERS_H
 #define SIMPLEX_PARSERS_H
-
-
-
 
 #include <iostream>
 #include <set>
